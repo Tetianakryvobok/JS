@@ -1,15 +1,34 @@
-let firstnumber;
-let secondnumber;
+let firstNumber;
+let secondNumber;
 
-firstnumber = prompt("Enter first number");
-secondnumber = prompt("Enter second number");
+firstNumber = prompt("Введіть перше число");
+secondNumber = prompt("Введіть друге число");
+
+if (!firstNumber || !secondNumber) {
+   alert("Помилка");
+} else {
+
+   let sum = Number(firstNumber) + Number(secondNumber); alert("Сума: " + sum);
+
+   let difference = Number(firstNumber) - Number(secondNumber);
+   if (firstNumber < secondNumber) {
+      let confirmed = confirm("Ви впевнені, що хочете продовжити операцію?");
+      if (confirmed) {
+         difference = Number(firstNumber) - Number(secondNumber);
+         alert("Різниця: " + difference);
+      }
+   } else {
+      alert("Різниця: " + difference);
+   }
+
+   let product = Number(firstNumber) * Number(secondNumber); alert("Добуток: " + product);
+   let quotient = Number(firstNumber) / Number(secondNumber);
+   if (Number(secondNumber) === 0) {
+      alert("На нуль ділення неможливе");
+   } else {
+      quotient = Number(firstNumber) / Number(secondNumber);
+      alert("Ділення: " + quotient);
+   }
 
 
-let sum = Number(firstnumber) + Number(secondnumber);
-let difference = Number(firstnumber) - Number(secondnumber);
-let product = Number(firstnumber) * Number(secondnumber);
-let quotient = Number(firstnumber) / Number(secondnumber);
-
-alert("Sum: " + sum + "\ndifference: " + difference + "\nproduct: " + product + "\nquotient: " + quotient);
-
-
+}
