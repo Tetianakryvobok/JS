@@ -1,8 +1,9 @@
+
 let arr = [74, 12, 27, 37, 41, 108, 36, 7, 15, 3];
 
 let sum = 0;
-let min = arr[0];
-let max = arr[0];
+let min = Infinity;
+let max = -Infinity;
 
 for (let i = 0; i < arr.length; i++) {
 
@@ -21,10 +22,11 @@ console.log(sum);
 console.log(min);
 console.log(max);
 
+let row = "";
 for (let i = 1; i <= 5; i++) {
-   let row = "";
-   for (let n = 1; n <= i; n++) {
-      row += "#";
-   }
+
+   row += "#";
+
    console.log(row);
+
 }
