@@ -1,43 +1,115 @@
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
+let firstNumber;
+let secondNumber;
+
+firstNumber = prompt("Введіть перше число");
+secondNumber = prompt("Введіть друге число");
+
+if (!firstNumber || !secondNumber) {
+  alert("Помилка");
+} else {
+
+  let sum = Number(firstNumber) + Number(secondNumber); alert("Сума: " + sum);
+
+  let difference = Number(firstNumber) - Number(secondNumber);
+  if (firstNumber < secondNumber) {
+    let confirmed = confirm("Ви впевнені, що хочете продовжити операцію?");
+    if (confirmed) {
+      difference = Number(firstNumber) - Number(secondNumber);
+      alert("Різниця: " + difference);
+    }
+  } else {
+    alert("Різниця: " + difference);
+  }
+
+  let product = Number(firstNumber) * Number(secondNumber); alert("Добуток: " + product);
+  let quotient = Number(firstNumber) / Number(secondNumber);
+  if (Number(secondNumber) === 0) {
+    alert("На нуль ділення неможливе");
+  } else {
+    quotient = Number(firstNumber) / Number(secondNumber);
+    alert("Ділення: " + quotient);
+  }
+
+
+}
+class Accumulator {
+  constructor(initialValue) {
+    this.value = initialValue;
+  }
+
+  increment() {
+    this.value++;
+  }
+
+  decrement() {
+    this.value--;
+  }
+}
+const acc = new Accumulator(1);
+acc.increment();
+console.log(acc.value);
+acc.increment();
+console.log(acc.value);
+
+acc.decrement();
+console.log(acc.value);
+acc.decrement();
+console.log(acc.value);
+
+class CancelableAccumulator extends Accumulator {
+  constructor(initialValue) {
+    super(initialValue);
+    this.initialValue = initialValue;
+  }
+
+  clear() {
+    this.value = this.initialValue;
+  }
 }
 
-class User {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
+const acc2 = new CancelableAccumulator(1);
+console.log(acc2.value);
 
-  sayHello() {
-    return `Привіт, я ${this.name}, мені ${this.age} років`;
+acc2.increment();
+console.log(acc2.value);
+
+acc2.decrement();
+console.log(acc2.value);
+
+acc2.clear();
+console.log(acc2.value);
+
+
+
+
+let arr = [74, 12, 27, 37, 41, 108, 36, 7, 15, 3];
+
+let sum = 0;
+let min = Infinity;
+let max = -Infinity;
+
+for (let i = 0; i < arr.length; i++) {
+
+  if (typeof arr[i] === "number") {
+    sum = sum + arr[i];
+
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+    }
   }
 }
+console.log(sum);
+console.log(min);
+console.log(max);
 
-const user = new User("Дмитро", 25);
-console.log(user.sayHello());
+let row = "";
+for (let i = 1; i <= 5; i++) {
 
+  row += "#";
 
-class Calculator {
-  constructor() {
-    this.num1 = 0;
-    this.num2 = 0;
-  }
+  console.log(row);
 
-  ask() {
-    this.num1 = parseFloat(prompt("Введіть перше число:"));
-    this.num2 = parseFloat(prompt("Введіть друге число:"));
-  }
-
-  sum() {
-    return this.num1 + this.num2;
-  }
-
-  mul() {
-    return this.num1 * this.num2;
-  }
 }
-
-const calc = new Calculator();
-calc.ask();
-console.log(`Сума: ${calc.sum()}`);
-console.log(`Добуток: ${calc.mul()}`);
